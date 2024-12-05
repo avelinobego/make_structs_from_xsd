@@ -7,52 +7,73 @@ pub struct Schema {
     pub attribute_form_default: String,
     #[serde(rename = "@xmlns:xs")]
     pub xmlns: String,
-    pub complex_type: Vec<ComplexType>,
-    pub simple_type: Vec<SimpleType>,
+    #[serde(rename = "$value")]
+    pub types: Vec<Types>,
 }
 
 /*----------------------------------------------------------------------------------------------*/
+
+#[derive(Serialize, Deserialize, Clone, Debug)]
+#[serde(rename_all = "camelCase")]
+pub enum Types {
+    ComplexType(ComplexType),
+    SimpleType(SimpleType),
+}
 
 #[derive(Serialize, Deserialize, Clone, Debug)]
 #[serde(rename_all = "camelCase")]
 pub struct ComplexType {
     #[serde(rename = "@name")]
-    pub name: String,
+    pub name: Option<String>,
     pub annotation: Option<Documentation>,
-    pub sequence: Element,
+    pub sequence: Sequence,
 }
-
-#[derive(Serialize, Deserialize, Clone, Debug)]
-#[serde(rename_all = "camelCase")]
-pub struct Documentation {
-    pub documentation: Vec<String>,
-}
-
-#[derive(Serialize, Deserialize, Clone, Debug)]
-#[serde(rename_all = "camelCase")]
-pub struct Element {
-    pub element: Vec<Complex>,
-}
-
-//Aqui será um enum pra contempla os tipos complexo e simples
-#[derive(Serialize, Deserialize, Clone, Debug)]
-#[serde(rename_all = "camelCase")]
-pub struct Complex {
-    #[serde(rename = "@name")]
-    pub name: String,
-    #[serde(rename = "@type")]
-    pub value_type: Option<String>,
-}
-
-/*----------------------------------------------------------------------------------------------*/
 
 #[derive(Serialize, Deserialize, Clone, Debug)]
 #[serde(rename_all = "camelCase")]
 pub struct SimpleType {
     #[serde(rename = "@name")]
-    pub name: String,
+    pub name: Option<String>,
     pub annotation: Option<Documentation>,
-    pub restriction: Restriction
+    pub restriction: Option<Restriction>,
+}
+
+#[derive(Serialize, Deserialize, Clone, Debug)]
+#[serde(rename_all = "camelCase")]
+pub struct Documentation {
+    #[serde(rename = "$value")]
+    value: Vec<String>,
+}
+
+#[derive(Serialize, Deserialize, Clone, Debug)]
+#[serde(rename_all = "camelCase")]
+pub struct Sequence {
+    pub element: Vec<Ele>,
+}
+
+#[derive(Serialize, Deserialize, Clone, Debug)]
+#[serde(rename_all = "camelCase")]
+pub enum Ele {
+    Element {
+        #[serde(rename = "@name")]
+        name: String,
+        #[serde(rename = "@minOccurs")]
+        min_occurs: Option<i32>,
+        #[serde(rename = "@maxOccurs")]
+        max_occurs: Option<i32>,
+        #[serde(rename = "@type")]
+        type_name: Option<String>,
+        #[serde(rename = "$value")]
+        value: Option<Vec<Values>>,
+    },
+}
+
+#[derive(Serialize, Deserialize, Clone, Debug)]
+#[serde(rename_all = "camelCase")]
+pub enum Values {
+    Annotation(Documentation),
+    SimpleType(SimpleType),
+    ComplexType(ComplexType),
 }
 
 #[derive(Serialize, Deserialize, Clone, Debug)]
