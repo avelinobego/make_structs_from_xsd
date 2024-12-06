@@ -12,7 +12,7 @@ fn main() {
 
     let arquivo = fs::read_to_string(file_path).expect("Should have been able to read the file");
 
-    println!("Quantidade de linhas: {}", &arquivo.lines().count());
+    // println!("Quantidade de linhas: {}", &arquivo.lines().count());
     // println!("{arquivo}");
 
     let object: Schema = from_str(&arquivo).unwrap();

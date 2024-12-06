@@ -64,13 +64,13 @@ pub enum Ele {
         #[serde(rename = "@type")]
         type_name: Option<String>,
         #[serde(rename = "$value")]
-        value: Option<Vec<Values>>,
+        value: Option<Vec<ElementValues>>,
     },
 }
 
 #[derive(Serialize, Deserialize, Clone, Debug)]
 #[serde(rename_all = "camelCase")]
-pub enum Values {
+pub enum ElementValues {
     Annotation(Documentation),
     SimpleType(SimpleType),
     ComplexType(ComplexType),
@@ -81,4 +81,60 @@ pub enum Values {
 pub struct Restriction {
     #[serde(rename = "@base")]
     pub base: String,
+    pub enumeration: Option<Vec<Enumeration>>,
+    #[serde(rename = "$value")]
+    pub values: Option<Vec<RestrictionValues>>,
+    // pub min_length: Option<String>,
+    // pub max_length: Option<String>,
+    // pub pattern: Option<Vec<String>>,
+}
+
+#[derive(Serialize, Deserialize, Clone, Debug)]
+#[serde(rename_all = "camelCase")]
+
+pub enum RestrictionValues {
+    TotalDigits {
+        #[serde(rename = "@value")]
+        value: u32,
+    },
+    MinLength {
+        #[serde(rename = "@value")]
+        value: u32,
+    },
+    Length {
+        #[serde(rename = "@value")]
+        value: u32,
+    },
+    Pattern {
+        #[serde(rename = "@value")]
+        value: String,
+    },
+    MaxLength {
+        #[serde(rename = "@value")]
+        value: u32,
+    },
+    FractionDigits {
+        #[serde(rename = "@value")]
+        value: u32,
+    },
+    MinExclusive {
+        #[serde(rename = "@value")]
+        value: u32,
+    },
+    MaxInclusive {
+        #[serde(rename = "@value")]
+        value: String,
+    },
+    MinInclusive {
+        #[serde(rename = "@value")]
+        value: String,
+    },
+}
+
+#[derive(Serialize, Deserialize, Clone, Debug)]
+#[serde(rename_all = "camelCase")]
+pub struct Enumeration {
+    #[serde(rename = "@value")]
+    pub value: String,
+    pub annotation: Option<Documentation>,
 }
