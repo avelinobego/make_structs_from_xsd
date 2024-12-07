@@ -84,9 +84,6 @@ pub struct Restriction {
     pub enumeration: Option<Vec<Enumeration>>,
     #[serde(rename = "$value")]
     pub values: Option<Vec<RestrictionValues>>,
-    // pub min_length: Option<String>,
-    // pub max_length: Option<String>,
-    // pub pattern: Option<Vec<String>>,
 }
 
 #[derive(Serialize, Deserialize, Clone, Debug)]
@@ -119,11 +116,11 @@ pub enum RestrictionValues {
     },
     MinExclusive {
         #[serde(rename = "@value")]
-        value: u32,
+        value: f32,
     },
     MaxInclusive {
         #[serde(rename = "@value")]
-        value: String,
+        value: f32,
     },
     MinInclusive {
         #[serde(rename = "@value")]
