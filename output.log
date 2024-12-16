@@ -1,5 +1,4 @@
-   Compiling make_structs_from_xsd v0.1.0 (/home/avelinobego/projetos/rust/make_structs_from_xsd)
-    Finished `dev` profile [unoptimized + debuginfo] target(s) in 1.48s
+    Finished `dev` profile [unoptimized + debuginfo] target(s) in 0.07s
      Running `target/debug/make_structs_from_xsd`
 [src/main.rs:20:5] object = Schema {
     attribute_form_default: "unqualified",
@@ -2673,10 +2672,10 @@
                                                                 value: 2,
                                                             },
                                                             MinExclusive {
-                                                                value: 0,
+                                                                value: 0.0,
                                                             },
                                                             MaxInclusive {
-                                                                value: "99.99",
+                                                                value: 99.99,
                                                             },
                                                         ],
                                                     ),
@@ -5468,7 +5467,7 @@
                                     value: "0.5",
                                 },
                                 MaxInclusive {
-                                    value: "2",
+                                    value: 2.0,
                                 },
                             ],
                         ),
@@ -6823,10 +6822,10 @@
                                     value: 1,
                                 },
                                 MinExclusive {
-                                    value: 0,
+                                    value: 0.0,
                                 },
                                 MaxInclusive {
-                                    value: "999.9",
+                                    value: 999.9,
                                 },
                             ],
                         ),
@@ -6945,7 +6944,7 @@
                                     value: "0",
                                 },
                                 MaxInclusive {
-                                    value: "31",
+                                    value: 31.0,
                                 },
                                 Pattern {
                                     value: "\\d{1,2}",
@@ -7176,10 +7175,10 @@
                                     value: 2,
                                 },
                                 MinExclusive {
-                                    value: 0,
+                                    value: 0.0,
                                 },
                                 MaxInclusive {
-                                    value: "9999999999.99",
+                                    value: 10000000000.0,
                                 },
                             ],
                         ),
@@ -7213,10 +7212,10 @@
                                     value: 2,
                                 },
                                 MinExclusive {
-                                    value: 0,
+                                    value: 0.0,
                                 },
                                 MaxInclusive {
-                                    value: "999.99",
+                                    value: 999.99,
                                 },
                             ],
                         ),
@@ -10039,7 +10038,7 @@
                                     value: "1",
                                 },
                                 MaxInclusive {
-                                    value: "12",
+                                    value: 12.0,
                                 },
                             ],
                         ),
@@ -11440,7 +11439,7 @@
                                     value: "-999999999999.99",
                                 },
                                 MaxInclusive {
-                                    value: "999999999999.99",
+                                    value: 1000000000000.0,
                                 },
                             ],
                         ),
@@ -11467,10 +11466,10 @@
                                     value: 2,
                                 },
                                 MinExclusive {
-                                    value: 0,
+                                    value: 0.0,
                                 },
                                 MaxInclusive {
-                                    value: "999999999999.99",
+                                    value: 1000000000000.0,
                                 },
                             ],
                         ),
@@ -11500,7 +11499,7 @@
                                     value: "0",
                                 },
                                 MaxInclusive {
-                                    value: "999999999999.99",
+                                    value: 1000000000000.0,
                                 },
                             ],
                         ),
@@ -11527,10 +11526,10 @@
                                     value: 2,
                                 },
                                 MinExclusive {
-                                    value: 0,
+                                    value: 0.0,
                                 },
                                 MaxInclusive {
-                                    value: "100",
+                                    value: 100.0,
                                 },
                             ],
                         ),
@@ -11560,7 +11559,7 @@
                                     value: "0",
                                 },
                                 MaxInclusive {
-                                    value: "100",
+                                    value: 100.0,
                                 },
                             ],
                         ),

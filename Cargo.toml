@@ -4,5 +4,7 @@ version = "0.1.0"
 edition = "2021"
 
 [dependencies]
-serde = { version = "*", features = ["derive"]}
-quick-xml = { version = "*", features = ["serialize", "overlapped-lists"] }
+serde = { version = "1.0.216", features = ["derive"]}
+quick-xml = { version = "0.37.1", features = ["serialize", "overlapped-lists"] }
+sailfish = "0.9.0"
+convert_case = "0.6.0"
