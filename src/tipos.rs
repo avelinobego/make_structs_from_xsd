@@ -20,6 +20,29 @@ pub enum Types {
     SimpleType(SimpleType),
 }
 
+use convert_case::{Case, Casing};
+
+impl Types {
+    pub fn has_name(&self) -> bool {
+        match self {
+            Types::ComplexType(c) => c.name.is_some(),
+            Types::SimpleType(s) => s.name.is_some(),
+        }
+    }
+
+    pub fn name(&self) -> String {
+        if self.has_name() {
+            match self {
+                Types::ComplexType(c) => c.name.clone().unwrap().to_case(Case::UpperCamel),
+                Types::SimpleType(s) => s.name.clone().unwrap().to_case(Case::UpperCamel),
+            }    
+        } else {
+            "".into()
+        }
+    }
+
+}
+
 #[derive(Serialize, Deserialize, Clone, Debug)]
 #[serde(rename_all = "camelCase")]
 pub struct ComplexType {

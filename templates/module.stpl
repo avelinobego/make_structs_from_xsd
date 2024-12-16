@@ -1,0 +1,9 @@
+<html>
+  <body>
+    <% for t in &types { %>
+    
+    // Estrutura <%= t.name() %> 
+    pub struct <%= t.name() %> {<% } %>
+    }
+  </body>
+</html>
