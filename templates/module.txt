@@ -1,0 +1,3 @@
+{% for t in modules.types %}
+  {{loop.index}}. {{t.name}}
+{% endfor %}
