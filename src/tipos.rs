@@ -1,3 +1,4 @@
+use convert_case::{Case, Casing};
 use serde::{Deserialize, Serialize};
 
 #[derive(Serialize, Deserialize, Clone, Debug)]
@@ -20,8 +21,6 @@ pub enum Types {
     SimpleType(SimpleType),
 }
 
-use convert_case::{Case, Casing};
-
 impl Types {
     pub fn has_name(&self) -> bool {
         match self {
@@ -35,12 +34,29 @@ impl Types {
             match self {
                 Types::ComplexType(c) => c.name.clone().unwrap().to_case(Case::UpperCamel),
                 Types::SimpleType(s) => s.name.clone().unwrap().to_case(Case::UpperCamel),
-            }    
+            }
         } else {
             "".into()
         }
     }
 
+    pub fn has_doc(&self) -> bool {
+        match self {
+            Types::ComplexType(c) => c.annotation.is_some(),
+            Types::SimpleType(s) => s.annotation.is_some(),
+        }
+    }
+
+    pub fn docs(&self) -> Vec<String> {
+        if self.has_doc() {
+            match self {
+                Types::ComplexType(c) => c.annotation.clone().unwrap().value,
+                Types::SimpleType(s) => s.annotation.clone().unwrap().value,
+            }
+        } else {
+            vec![]
+        }
+    }
 }
 
 #[derive(Serialize, Deserialize, Clone, Debug)]
